@@ -1,0 +1,21 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f7a0be; /* Mesma cor do header */
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsividade para o Footer (se precisar de ajustes específicos, mas flexbox já ajuda) */
+@media (max-width: 480px) {
+  .footer {
+    flex-wrap: wrap; /* Permite que os botões quebrem a linha */
+    justify-content: center;
+    gap: 10px; /* Espaço entre eles se quebrarem */
+  }
+}

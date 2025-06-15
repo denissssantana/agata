@@ -1,0 +1,67 @@
+.videoCard {
+  position: relative; /* Para posicionar o overlay de play */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  overflow: hidden; /* Para garantir que o arredondamento funcione corretamente */
+  width: 100%;
+  max-width: 300px; /* Limite a largura para o card de vídeo */
+  margin: 0 auto; /* Centraliza o card no grid/flex */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Efeito de hover */
+  display: flex; /* Para centralizar o conteúdo verticalmente */
+  flex-direction: column;
+  justify-content: space-between; /* Espaça imagem e título/overlay */
+}
+
+.videoCard:hover {
+  transform: translateY(-5px); /* Move ligeiramente para cima no hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Aumenta a sombra no hover */
+}
+
+.videoImage {
+  width: 100%;
+  height: 180px; /* Altura fixa para as capas de vídeo */
+  object-fit: cover; /* Garante que a imagem preencha sem distorcer */
+  display: block; /* Remove o espaço extra abaixo da imagem */
+  border-radius: 8px 8px 0 0; /* Arredonda apenas os cantos superiores */
+}
+
+.playOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 40px); /* Ajusta a altura se houver título abaixo */
+  background-color: rgba(0, 0, 0, 0.4); /* Fundo semi-transparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 3em;
+  opacity: 0; /* Escondido por padrão */
+  transition: opacity 0.3s ease;
+  pointer-events: none; /* Permite que o clique passe para o card */
+}
+
+.videoCard:hover .playOverlay {
+  opacity: 1; /* Mostra o overlay no hover */
+}
+
+.videoTitle {
+  font-size: 1.1em;
+  color: #333;
+  padding: 10px;
+  margin: 0;
+  text-align: center;
+  background-color: #f8f8f8; /* Um fundo claro para o título */
+  border-top: 1px solid #eee;
+  border-radius: 0 0 8px 8px; /* Arredonda apenas os cantos inferiores */
+}
+
+/* Ajuste para o playOverlay em telas menores, se o título não for usado */
+@media (max-width: 768px) {
+  .playOverlay {
+    height: 100%; /* Se você não usar o título abaixo, pode ser 100% */
+  }
+}

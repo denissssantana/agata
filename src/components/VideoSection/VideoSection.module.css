@@ -1,0 +1,34 @@
+.videoSection {
+  padding: 40px 20px;
+  background-color: #f7a0be; /* Cor rosa do rodapé e cabeçalho */
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: 2.5em;
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+.videoCardsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Responsividade para VideoSection */
+@media (max-width: 1024px) {
+  .videoCardsContainer {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .videoCardsContainer {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

@@ -1,0 +1,52 @@
+.heroSection {
+  background-color: #ffe066; /* Cor amarela do fundo */
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 160px); /* Ajuste para preencher o espaço entre header/footer */
+  /* Ou um min-height menor se você tiver mais seções */
+}
+
+.contentWrapper {
+  display: flex;
+  align-items: center;
+  gap: 30px; /* Espaço entre imagem e texto */
+  max-width: 1000px; /* Limite a largura para melhor leitura */
+  width: 100%;
+}
+
+.heroImage {
+  width: 400px; /* Tamanho fixo para desktop */
+  height: auto;
+  border-radius: 8px; /* Cantos arredondados */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.heroText {
+  flex: 1; /* Ocupa o espaço restante */
+  color: #ff69b4; /* Cor do texto rosa choque */
+  font-size: 2.2em;
+  font-weight: bold;
+  text-align: left; /* Alinhamento padrão para desktop */
+  line-height: 1.4;
+}
+
+/* Responsividade para Hero Section */
+@media (max-width: 768px) {
+  .contentWrapper {
+    flex-direction: column; /* Imagem e texto um abaixo do outro */
+    text-align: center; /* Centraliza o texto no mobile */
+    gap: 20px;
+  }
+
+  .heroImage {
+    width: 80%; /* Ocupa mais largura no mobile */
+    max-width: 300px; /* Limite o tamanho mesmo no mobile */
+  }
+
+  .heroText {
+    font-size: 1.6em; /* Diminui o tamanho da fonte */
+    text-align: center; /* Garante centralização */
+  }
+}

@@ -1,0 +1,30 @@
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  width: 100%; /* Ocupa 100% da coluna do grid */
+  max-width: 300px; /* Limite para não ficar muito largo em telas grandes */
+  margin: 0 auto; /* Centraliza o card se for menor que max-width */
+}
+
+.cardImage {
+  width: 100%;
+  height: 200px; /* Altura fixa para as imagens */
+  object-fit: cover; /* Garante que a imagem preencha sem distorcer */
+  border-radius: 4px; /* Cantos levemente arredondados */
+  margin-bottom: 15px;
+}
+
+.cardTitle {
+  font-size: 1.5em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.cardDetail, .cardDescription {
+  font-size: 0.95em;
+  color: #666;
+  margin-bottom: 5px;
+}

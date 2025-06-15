@@ -1,0 +1,34 @@
+.cardsSection {
+  padding: 40px 20px;
+  background-color: #e6f7ff; /* Um azul claro de fundo (pode ajustar) */
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: 2.5em;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 4 colunas com min 280px */
+  gap: 30px; /* Espaço entre os cards */
+  justify-content: center; /* Centraliza os cards no grid */
+  max-width: 1200px; /* Limita a largura do container de cards */
+  margin: 0 auto; /* Centraliza o container */
+}
+
+/* Responsividade para CardsSection */
+@media (max-width: 1024px) {
+  .cardsContainer {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Menos colunas ou menores */
+  }
+}
+
+@media (max-width: 768px) {
+  .cardsContainer {
+    grid-template-columns: 1fr; /* Uma coluna no mobile */
+    gap: 20px;
+  }
+}
