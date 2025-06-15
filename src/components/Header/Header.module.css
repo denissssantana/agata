@@ -1,0 +1,70 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #f7a0be; /* Cor de fundo rosa da imagem */
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000; /* Garante que fique acima de outros elementos */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaço entre a logo e o título */
+}
+
+.logo {
+  height: 50px; /* Ajuste o tamanho da sua logo */
+  width: auto;
+}
+
+.title {
+  color: #fff; /* Cor do texto */
+  font-size: 2em;
+  margin: 0;
+}
+
+.nav {
+  /* Estilos para o menu hambúrguer no mobile virão aqui */
+}
+
+.navList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 30px; /* Espaço entre os itens do menu */
+}
+
+.navItem a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2em;
+  transition: color 0.3s ease;
+}
+
+.navItem a:hover {
+  color: #eee;
+}
+
+/* Responsividade para o Header - Exemplo básico de menu hambúrguer */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .navList {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  /* Aqui você implementaria a lógica para esconder/mostrar o menu */
+  /* Por enquanto, ele apenas empilha. */
+}
