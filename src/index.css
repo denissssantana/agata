@@ -1,3 +1,5 @@
+/* src/index.css */
+
 /* Reset básico para todos os elementos */
 * {
   box-sizing: border-box;
@@ -5,9 +7,27 @@
   padding: 0;
 }
 
-html, body, #root {
+html {
+  scroll-behavior: smooth; /* Para rolagem suave */
+  /* --- AQUI ESTÁ A CHAVE: --- */
+  scroll-padding-top: 70px; /* Compensa a altura do header fixo (70px) */
+  /* --- FIM DA CHAVE --- */
+  scroll-padding-bottom: 50px; /* Compensa a altura do footer fixo (50px) */
+}
+
+body, #root {
   height: 100%;
-  font-family: 'Arial', sans-serif; /* Fonte padrão */
-  background-color: #f0f0f0; /* Um fundo neutro para o corpo */
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f0f0;
   color: #333;
+}
+
+/* Estilos para o elemento main */
+.main-content {
+  --header-height: 70px;
+  --footer-height: 50px;
+
+  padding-top: var(--header-height);
+  padding-bottom: var(--footer-height);
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
 }

@@ -1,39 +1,40 @@
+// src/components/VideoSection/VideoSection.jsx
 import React from 'react';
 import styles from './VideoSection.module.css';
 import VideoCard from '../VideoCard/VideoCard';
 
 // Importe suas imagens de capa de vídeo aqui.
-// Certifique-se de que o caminho está correto para onde suas imagens estão.
-// Exemplo:
-import reiLeaoCover from '../../assets/images/rei1.webp'; // Substitua pelo caminho real da sua imagem!
+// ATENÇÃO: Certifique-se de que o nome e o caminho do arquivo estão CORRETOS no seu sistema de arquivos.
+import reiLeaoCover from '../../assets/images/rei1.webp'; 
 
 const videoData = [
   {
-    imageSrc: reiLeaoCover, // Use a imagem que você importou
-    videoUrl: 'https://www.youtube.com/watch?v=R0iI8K8tF0E', // Exemplo: Link real do YouTube
+    imageSrc: reiLeaoCover,
+    videoUrl: 'https://www.youtube.com/watch?v=M9-M-Wq98kY', // Exemplo de link do YouTube
     title: 'Rei Leão - Hakuna Matata',
   },
   {
     imageSrc: reiLeaoCover,
-    videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', // Outro exemplo
-    title: 'Video 2 Título',
+    videoUrl: 'https://www.youtube.com/watch?v=YourVideoId2',
+    title: 'Outro Filme Legal',
   },
   {
     imageSrc: reiLeaoCover,
-    videoUrl: 'https://www.youtube.com/watch?v=another-video-id',
-    title: 'Video 3 Título',
+    videoUrl: 'https://www.youtube.com/watch?v=YourVideoId3',
+    title: 'Aventura na Selva',
   },
   {
     imageSrc: reiLeaoCover,
-    videoUrl: 'https://www.youtube.com/watch?v=yet-another-id',
-    title: 'Video 4 Título',
+    videoUrl: 'https://www.youtube.com/watch?v=YourVideoId4',
+    title: 'Documentário de Felinos',
   },
-  // Adicione mais vídeos aqui, se quiser
 ];
 
-function VideoSection() {
+// O componente VideoSection recebe a prop 'id' do App.jsx
+function VideoSection({ id }) { 
   return (
-    <section id="helotv" className={styles.videoSection}>
+    // A tag <section> deve ter o id correspondente para a navegação por âncora
+    <section id={id} className={styles.videoSection}>
       <h2 className={styles.sectionTitle}>Helo TV</h2>
       <div className={styles.videoCardsContainer}>
         {videoData.map((video, index) => (

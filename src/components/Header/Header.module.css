@@ -1,35 +1,60 @@
+/* --- ESTILOS GERAIS DO HEADER (APLICAM-SE SEMPRE, INCLUSIVE NO DESKTOP) --- */
 .header {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #f7a0be; /* Cor de fundo rosa da imagem */
+  background-color: deeppink; /* Cor de fundo rosa */
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 1000; /* Garante que fique acima de outros elementos */
+  z-index: 1000; /* Garante que o header fique na frente */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  height: 70px; /* ALTURA FIXA DO HEADER: MUITO IMPORTANTE PARA O CALC DO MENU MOBILE */
 }
 
 .logoContainer {
   display: flex;
   align-items: center;
-  gap: 10px; /* Espaço entre a logo e o título */
+  gap: 10px;
+  flex-shrink: 0; /* Impede encolhimento */
 }
 
 .logo {
-  height: 50px; /* Ajuste o tamanho da sua logo */
+  height: 50px;
   width: auto;
 }
 
 .title {
-  color: #fff; /* Cor do texto */
+  color: #fff;
   font-size: 2em;
   margin: 0;
+  flex-shrink: 0; /* Impede encolhimento */
 }
 
+/* --- ESTILOS DO MENU DE NAVEGAÇÃO (DESKTOP) --- */
 .nav {
-  /* Estilos para o menu hambúrguer no mobile virão aqui */
+  display: flex; /* Menu visível e em linha no desktop */
+  align-items: center;
+  flex-grow: 1;
+  justify-content: flex-end; /* Alinha links à direita */
+
+  /* Resets para garantir que estilos mobile não vazem para desktop */
+  position: static;
+  top: auto;
+  right: auto;
+  width: auto;
+  height: auto;
+  background-color: transparent;
+  backdrop-filter: none;
+  transform: none;
+  opacity: 1;
+  pointer-events: auto; /* Clicável */
+  transition: none; /* Desliga transição para desktop */
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  overflow-y: visible;
+  padding: 0;
 }
 
 .navList {
@@ -37,7 +62,7 @@
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 30px; /* Espaço entre os itens do menu */
+  gap: 30px;
 }
 
 .navItem a {
@@ -45,26 +70,99 @@
   text-decoration: none;
   font-size: 1.2em;
   transition: color 0.3s ease;
+  padding: 5px 0;
+  display: block;
 }
 
 .navItem a:hover {
   color: #eee;
 }
 
-/* Responsividade para o Header - Exemplo básico de menu hambúrguer */
+/* --- ESTILOS DO BOTÃO HAMBÚRGUER (ESCONDIDO POR PADRÃO NO DESKTOP) --- */
+.hamburgerButton {
+  display: none; /* Escondido no desktop */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1100; /* Sempre acima do menu */
+}
+
+.hamburgerLine {
+  width: 30px;
+  height: 3px;
+  background-color: #fff;
+  margin: 6px 0;
+  transition: all 0.3s ease;
+}
+
+/* --- MEDIA QUERY PARA MOBILE (APLICA-SE EM TELAS DE ATÉ 768PX) --- */
 @media (max-width: 768px) {
+  /* Ajustes para o Header no Mobile */
   .header {
-    flex-direction: column;
-    padding: 10px;
+    padding: 10px 15px; /* Ajuste o padding para telas menores */
   }
 
+  .title {
+    font-size: 1.8em; /* Diminui o título */
+  }
+
+  /* Mostra o botão Hambúrguer APENAS no Mobile */
+  .hamburgerButton {
+    display: block;
+  }
+
+  /* --- ESTILOS DA CAIXA DO MENU MOBILE (QUANDO FECHADO E ABERTO) --- */
+  .nav {
+    position: fixed; /* Essencial para flutuar */
+    top: 70px; /* COMEÇA EXATAMENTE ABAIXO DO HEADER (use a altura do .header) */
+    right: 0; /* CAIXA COLADA À DIREITA */
+    width: 50%; /* LARGURA DA CAIXA */
+    height: auto; /* ALTURA SE AJUSTA AO CONTEÚDO */
+    max-height: calc(100vh - 70px); /* Limita a altura para não sair da tela para baixo */
+    
+    background-color: rgba(247, 160, 190, 0.9); /* Fundo rosa semi-transparente (Opacidade 0.9) */
+    backdrop-filter: blur(5px); /* Efeito de desfoque (opcional) */
+    
+    display: flex; /* Organiza os links internamente */
+    flex-direction: column; /* Links empilhados */
+    justify-content: flex-start; /* Alinha links ao topo da caixa */
+    align-items: center; /* CENTRALIZA O TEXTO HORIZONTALMENTE */
+    padding: 20px; /* Padding interno para o conteúdo da caixa */
+    
+    /* --- PROPRIEDADES CHAVE PARA ANIMAÇÃO DE ENTRADA/SAÍDA --- */
+    transform: translateX(100%); /* Escondido fora da tela (para a direita) */
+    opacity: 0; /* COMPLETAMENTE INVISÍVEL */
+    pointer-events: none; /* IMPEDE CLIQUES NO CONTEÚDO POR TRÁS QUANDO ESCONDIDO */
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out; /* ANIMAÇÃO SUAVE EM AMBOS */
+    /* --- FIM DAS PROPRIEDADES CHAVE --- */
+    
+    z-index: 999; /* Garante que o menu esteja acima do conteúdo principal, mas abaixo do hambúrguer */
+    border-bottom-left-radius: 8px; /* Cantos arredondados inferiores (opcional) */
+    border-bottom-right-radius: 8px;
+    overflow-y: auto; /* Adiciona scroll se links excederem max-height */
+  }
+
+  /* --- ESTILOS DO MENU MOBILE QUANDO ESTÁ ABERTO (CLASSE navOpen) --- */
+  .nav.navOpen {
+    transform: translateX(0); /* Desliza para a posição visível */
+    opacity: 1; /* Torna-se totalmente visível */
+    pointer-events: auto; /* Permite cliques quando visível */
+  }
+
+  /* --- ESTILOS DA LISTA DE LINKS DENTRO DO MENU MOBILE --- */
   .navList {
-    flex-direction: column;
-    text-align: center;
-    gap: 10px;
-    margin-top: 10px;
+    flex-direction: column; /* Links em coluna */
+    text-align: center; /* TEXTO DOS LINKS CENTRALIZADO */
+    gap: 15px; /* Espaçamento vertical entre os links */
+    width: 100%; /* Lista ocupa a largura da caixa do menu */
+    padding: 0;
+    margin: 0;
   }
 
-  /* Aqui você implementaria a lógica para esconder/mostrar o menu */
-  /* Por enquanto, ele apenas empilha. */
+  /* --- ESTILOS DE CADA LINK INDIVIDUAL NO MENU MOBILE --- */
+  .navItem a {
+    font-size: 1.5em; /* Tamanho da fonte maior para fácil toque */
+    padding: 5px 0; /* Padding para área de clique */
+  }
 }

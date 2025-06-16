@@ -2,13 +2,18 @@
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: #f7a0be; /* Mesma cor do header */
-  padding: 10px 20px;
+  background-color: deeppink; /* Cor de fundo rosa */
+  /* --- MUDANÇAS FOCADAS NO TAMANHO E ESPAÇAMENTO --- */
+  padding: 35px 25px; /* Diminui o padding vertical (altura) e ajusta horizontal */
+  height: 50px; /* Define a altura fixa do footer */
+  /* --- FIM DAS MUDANÇAS DE TAMANHO --- */
   display: flex;
-  justify-content: space-around;
+  justify-content: space-around; /* Distribui os botões uniformemente */
   align-items: center;
   z-index: 1000;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  /* --- AUMENTANDO O GAP PARA MAIOR SEPARAÇÃO --- */
+  gap: 40px; /* Aumenta a distância entre os botões */
 }
 
 /* Responsividade para o Footer (se precisar de ajustes específicos, mas flexbox já ajuda) */
@@ -16,6 +21,8 @@
   .footer {
     flex-wrap: wrap; /* Permite que os botões quebrem a linha */
     justify-content: center;
-    gap: 10px; /* Espaço entre eles se quebrarem */
+    gap: 40px; /* Ajuste o gap no mobile se preferir um pouco mais ou menos */
+    height: auto; /* Deixa a altura automática para acomodar o flex-wrap em mobile */
+    padding: 0; /* Ajusta o padding para mobile se necessário */
   }
 }

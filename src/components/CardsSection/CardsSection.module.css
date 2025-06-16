@@ -1,7 +1,14 @@
+/* src/components/CardsSection/CardsSection.module.css */
+
 .cardsSection {
   padding: 40px 20px;
   background-color: #e6f7ff; /* Um azul claro de fundo (pode ajustar) */
   text-align: center;
+  /* --- MUDANÇA CHAVE AQUI --- */
+  /* Garante que a seção ocupe pelo menos a altura visível da tela,
+     considerando o header e o footer. Isso empurra o conteúdo da seção anterior para fora da vista. */
+  min-height: calc(100vh - var(--header-height, 70px) - var(--footer-height, 50px));
+  /* --- FIM DA MUDANÇA --- */
 }
 
 .sectionTitle {
@@ -12,23 +19,27 @@
 
 .cardsContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 4 colunas com min 280px */
-  gap: 30px; /* Espaço entre os cards */
-  justify-content: center; /* Centraliza os cards no grid */
-  max-width: 1200px; /* Limita a largura do container de cards */
-  margin: 0 auto; /* Centraliza o container */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* Responsividade para CardsSection */
 @media (max-width: 1024px) {
   .cardsContainer {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Menos colunas ou menores */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
 }
 
 @media (max-width: 768px) {
   .cardsContainer {
-    grid-template-columns: 1fr; /* Uma coluna no mobile */
+    grid-template-columns: 1fr;
     gap: 20px;
+  }
+  .cardsSection {
+    /* Mantém o min-height calculado para mobile também */
+    min-height: calc(100vh - var(--header-height, 70px) - var(--footer-height, 50px));
   }
 }
